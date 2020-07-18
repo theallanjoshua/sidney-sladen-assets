@@ -5,7 +5,8 @@
   "author": "Allan Joshua",
   "license": "ISC",
   "keywords": [
-    "obiman"
+    "sidney",
+    "sladen"
   ],
   "files": [
     "dist"
@@ -20,22 +21,14 @@
   "homepage": "https://github.com/theallanjoshua/sidney-sladen-assets#readme",
   "dependencies": {
     "amazon-cognito-auth-js-promises": "^1.1.5",
-    "antd": "^3.26.13",
-    "browser-image-compression": "^1.0.6",
-    "chart.js": "^2.9.2",
+    "antd": "^4.3.5",
     "material-color-hash": "^0.1.6",
-    "moment": "^2.24.0",
-    "obiman-data-models": "^1.0.104",
+    "moment": "^2.27.0",
     "prettysize": "^2.0.0",
-    "qrcode.react": "^1.0.0",
-    "rainbow-colors-array": "0.0.31",
-    "react": "^16.11.0",
-    "react-chartjs-2": "^2.8.0",
-    "react-dom": "^16.11.0",
-    "react-lazyload": "^2.6.6",
-    "react-qr-reader": "^2.2.1",
-    "react-router-dom": "^5.1.2",
-    "react-to-print": "^2.5.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-lazyload": "^2.6.9",
+    "react-router-dom": "^5.2.0"
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js",
@@ -44,15 +37,15 @@
     "release-patch": "npm version patch && npm run build && npm publish"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-async-to-generator": "^7.5.0",
-    "@babel/polyfill": "^7.6.0",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-async-to-generator": "^7.10.1",
+    "@babel/polyfill": "^7.10.1",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.1.0",
     "brotli-gzip-webpack-plugin": "^0.5.0",
     "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^2.1.1",
@@ -62,9 +55,9 @@
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.5.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.41.2",
-    "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Network from '../utils/network';
-import { Avatar, Icon } from 'antd';
+import { Avatar } from 'antd';
+import { PictureOutlined } from '@ant-design/icons';
 import toMaterialStyle from 'material-color-hash';
 import LazyLoad from 'react-lazyload';
 
@@ -42,9 +43,5 @@ export default class S3ToImage extends React.Component {
       src={this.state.src}
       alt={this.props.alt}
     />
-  </LazyLoad> :  <Icon
-    style={{ fontSize: '160px' }}
-    theme='filled'
-    type='picture'
-  />;
+  </LazyLoad> :  <PictureOutlined style={{ fontSize: '160px' }} />;
 }

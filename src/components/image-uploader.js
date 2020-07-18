@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Upload, Icon, Card, Typography, Spin } from 'antd';
+import { Upload, Card, Typography, Spin } from 'antd';
+import { PictureOutlined } from '@ant-design/icons';
 import pretty from 'prettysize';
 import Network from '../utils/network';
 import AuditTrail from './audit-trail';
@@ -64,7 +65,7 @@ export default class ImageUploader extends React.Component {
       }}
     >
       <p className='ant-upload-drag-icon'>
-        <Icon type='picture' />
+        <PictureOutlined />
       </p>
       <p className='ant-upload-text'>Click or drag images to this area to upload</p>
       <p className='ant-upload-hint'>Only .jpg, .jpeg and .png files are allowed</p>

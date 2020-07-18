@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Breadcrumb, Icon } from 'antd';
+import { Breadcrumb } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom'
 import { PAGE_URL_TITLE_MAP, getPathFromLocation } from '../constants/pages';
 import { withRouter } from 'react-router';
@@ -18,7 +19,7 @@ const getBreadcrumbs = () => getPathFromLocation()
 const BreadcrumbBar = () => <Consumer>
   {({ currentBusiness }) => <Breadcrumb>
     <Breadcrumb.Item key='home'>
-      <Link to='/'><Icon type='home' /></Link>
+      <Link to='/'><HomeOutlined /></Link>
     </Breadcrumb.Item>
     {getBreadcrumbs().map(({ link, title }) => <Breadcrumb.Item key={link}>
       <Link to={link}>{title === getCurrentBusinessId() ? currentBusiness.label : title}</Link>

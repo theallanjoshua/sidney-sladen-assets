@@ -1,98 +1,91 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
 import { Consumer } from '../context';
-import { Row, Col, Menu, Avatar, Icon, Affix } from 'antd';
-import { OBIMAN_LOGO } from '../constants/app';
-import Credentials from '../utils/credentials';
+import {
+  Row,
+  Col,
+  Menu,
+  Avatar,
+  Affix,
+} from 'antd';
+import {
+  HomeOutlined,
+  HomeFilled,
+  ShoppingOutlined,
+  ShoppingFilled,
+  PlusCircleOutlined,
+  PlusCircleFilled,
+  PictureOutlined,
+  PictureFilled,
+  ReadOutlined,
+  ReadFilled,
+  LogoutOutlined
+} from '@ant-design/icons';
+import { LOGO } from '../constants/app';
+// import Credentials from '../utils/credentials';
 import toMaterialStyle from 'material-color-hash';
 import {
-  HOME,
-  BUSINESS,
-  BUSINESS_EDIT,
-  INGREDIENTS,
-  PRODUCTS,
-  BILLS,
-  ORDERS,
+  getPathFromLocation,
   PAGE_URL_TITLE_MAP,
-  getBusinessSpecificUrl,
-  getPathFromLocation
+  HOME,
+  SHOP,
+  APPOINTMENT,
+  GALLERY,
+  STORIES,
 } from '../constants/pages';
-import S3ToImage from './s3-to-image';
 import { withRouter } from 'react-router';
-import { getCurrentBusinessId, isBusinessPath } from '../utils/businesses';
 
 const { SubMenu, Item, Divider } = Menu;
+const items = [
+  {
+    href: HOME,
+    icon: <HomeOutlined />,
+    activeIcon: <HomeFilled />
+  },
+  {
+    href: SHOP,
+    icon: <ShoppingOutlined />,
+    activeIcon: <ShoppingFilled />
+  },
+  {
+    href: APPOINTMENT,
+    icon: <PlusCircleOutlined />,
+    activeIcon: <PlusCircleFilled />
+  },
+  {
+    href: GALLERY,
+    icon: <PictureOutlined />,
+    activeIcon: <PictureFilled />
+  },
+  {
+    href: STORIES,
+    icon: <ReadOutlined />,
+    activeIcon: <ReadFilled />
+  }
+];
 
-const NavItems = ({ isBottom }) => {
-  const businessId = getCurrentBusinessId();
-  return businessId ? <Consumer>
-    {({ currentBusiness }) => <Menu
-      theme='dark'
-      mode='horizontal'
-      selectedKeys={[ getPathFromLocation().replace(`${BUSINESS}/${businessId}`,'') ]}
-      className={isBottom ? 'space-between' : 'right-align'}
-    >
-      <Item key={INGREDIENTS}>
-        <Link to={getBusinessSpecificUrl(INGREDIENTS)}>
-        {isBottom ? <Icon type='build' style={{ marginRight: '0px' }} /> :
-          <span>
-            <Icon type='build' />
-            {PAGE_URL_TITLE_MAP[INGREDIENTS]}
-          </span>}
-        </Link>
-      </Item>
-      <Item key={PRODUCTS}>
-        <Link to={getBusinessSpecificUrl(PRODUCTS)}>
-          {isBottom ? <Icon type='table' style={{ marginRight: '0px' }} /> :
-          <span>
-            <Icon type='table' />
-            {PAGE_URL_TITLE_MAP[PRODUCTS]}
-          </span>}
-        </Link>
-      </Item>
-      <Item key={BILLS}>
-        <Link to={getBusinessSpecificUrl(BILLS)}>
-        {isBottom ? <Icon type='container' style={{ marginRight: '0px' }} /> :
-          <span>
-            <Icon type='container' />
-            {PAGE_URL_TITLE_MAP[BILLS]}
-          </span>}
-        </Link>
-      </Item>
-      <Item key={ORDERS}>
-        <Link to={getBusinessSpecificUrl(ORDERS)}>
-        {isBottom ? <Icon type='shopping' style={{ marginRight: '0px' }} /> :
-          <span>
-            <Icon type='shopping' />
-            {PAGE_URL_TITLE_MAP[ORDERS]}
-          </span>}
-        </Link>
-      </Item>
-      <Item>
-        <Link to={BUSINESS_EDIT}>
-          <span>
-            <S3ToImage
-              isAvatar
-              alt={currentBusiness.label}
-              s3Key={currentBusiness.logo}
-            />
-          </span>
-        </Link>
-      </Item>
-    </Menu>}
-  </Consumer>  : null
-}
+const NavItems = ({ isBottom }) => <Menu
+  style={{ backgroundColor: '#000', borderBottom: 'none' }}
+  className={isBottom ? 'space-between' : 'right-align'}
+  mode='horizontal'
+  selectedKeys={[ getPathFromLocation() ]}
+>
+  {items.map(({ href, icon, activeIcon }) => <Item key={href}>
+    <Link to={href}>
+      <span className={isBottom ? 'flex-column' : ''}>
+        {getPathFromLocation() === href ? activeIcon : icon}
+        {PAGE_URL_TITLE_MAP[href]}
+      </span>
+    </Link>
+  </Item>)}
+</Menu>;
 
 class TopNav extends React.Component {
   render = () => <Consumer>
     {({ email, avatar }) => <Affix>
       <Row
         className='center-align'
-        style={{
-          paddingLeft: '10px',
-          background: '#001529',
-          boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)'
-        }}
+        style={{ paddingLeft: '10px' }}
       >
         <Col
           xs={20}
@@ -102,11 +95,8 @@ class TopNav extends React.Component {
           xl={3}
           xxl={3}
         >
-          <Link
-            to={HOME}
-            style={{ color: '#ddd' }}
-          >
-            {OBIMAN_LOGO}
+          <Link to={HOME}>
+            {LOGO}
           </Link>
         </Col>
         <Col
@@ -128,9 +118,9 @@ class TopNav extends React.Component {
           xxl={1}
         >
           <Menu
-            theme='dark'
-            mode='horizontal'
+            style={{ backgroundColor: '#000', borderBottom: 'none' }}
             className='right-align'
+            mode='horizontal'
             selectedKeys={[]}
           >
             <SubMenu
@@ -141,19 +131,12 @@ class TopNav extends React.Component {
                 size='small'
               />}
               >
-              <Item>
-                <Link to={isBusinessPath() ? HOME : BUSINESS}>
-                  <span>
-                    <Icon type='sync' />
-                    <span>{`Switch to ${isBusinessPath() ? 'customer' : 'business'} view`}</span>
-                  </span>
-                </Link>
-              </Item>
               <Divider />
               <Item>
                 <span>
-                  <Icon type='logout' />
-                  <span onClick={() => Credentials.logout()}>Logout</span>
+                  <LogoutOutlined />
+                  {/* <span onClick={() => Credentials.logout()}>Logout</span> */}
+                  <span>Logout</span>
                 </span>
               </Item>
             </SubMenu>
