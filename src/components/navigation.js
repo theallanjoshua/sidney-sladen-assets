@@ -72,9 +72,9 @@ const NavItems = ({ isBottom }) => <Menu
 >
   {items.map(({ href, icon, activeIcon }) => <Item key={href}>
     <Link to={href}>
-      <span className={isBottom ? 'flex-column' : ''}>
+      <span>
         {getPathFromLocation() === href ? activeIcon : icon}
-        <span>{PAGE_URL_TITLE_MAP[href]}</span>
+        {!isBottom ? <span style={{ marginLeft: '10px' }}>{PAGE_URL_TITLE_MAP[href]}</span> : null}
       </span>
     </Link>
   </Item>)}
