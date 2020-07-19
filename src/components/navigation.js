@@ -7,6 +7,7 @@ import {
   Menu,
   Avatar,
   Affix,
+  Button,
 } from 'antd';
 import {
   HomeOutlined,
@@ -88,34 +89,34 @@ class TopNav extends React.Component {
         style={{ paddingLeft: '10px' }}
       >
         <Col
-          xs={20}
-          sm={20}
-          md={5}
-          lg={5}
+          xs={12}
+          sm={12}
+          md={2}
+          lg={3}
           xl={3}
-          xxl={3}
+          xxl={4}
         >
-          <Link to={HOME}>
+          <Link to={HOME} style={{ marginTop: '3px' }}>
             {LOGO}
           </Link>
         </Col>
         <Col
           xs={0}
           sm={0}
-          md={17}
-          lg={17}
-          xl={20}
-          xxl={20}
+          md={18}
+          lg={18}
+          xl={18}
+          xxl={18}
         >
           <NavItems />
         </Col>
         <Col
-          xs={4}
-          sm={4}
-          md={2}
-          lg={2}
-          xl={1}
-          xxl={1}
+          xs={12}
+          sm={12}
+          md={4}
+          lg={3}
+          xl={3}
+          xxl={2}
         >
           <Menu
             style={{ backgroundColor: '#000', borderBottom: 'none' }}
@@ -123,7 +124,7 @@ class TopNav extends React.Component {
             mode='horizontal'
             selectedKeys={[]}
           >
-            <SubMenu
+            {email ? <SubMenu
               title={<Avatar
                 style={{ ...toMaterialStyle(email), marginBottom: '3px' }}
                 src={avatar}
@@ -136,10 +137,12 @@ class TopNav extends React.Component {
                 <span>
                   <LogoutOutlined />
                   {/* <span onClick={() => Credentials.logout()}>Logout</span> */}
-                  <span>Logout</span>
+                  <span style={{ marginLeft: '10px' }}>Logout</span>
                 </span>
               </Item>
-            </SubMenu>
+            </SubMenu> : <Item>
+              <Button type='primary' children={'Login'} />
+            </Item>}
           </Menu>
         </Col>
       </Row>
