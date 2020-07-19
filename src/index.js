@@ -9,17 +9,17 @@ import { TopNavigation, BottomNavigation } from './components/navigation';
 // import BreadcrumbBar from './components/breadcrumb-bar';
 import { Home } from './pages/home';
 import { Shop } from './pages/shop';
-import { Appointment } from './pages/appointment';
 import { Gallery } from './pages/gallery';
 import { Stories } from './pages/stories';
+import { Contact } from './pages/contact';
 import 'antd/dist/antd.dark.less';
 import './index.less';
 import {
   HOME,
   SHOP,
-  APPOINTMENT,
   GALLERY,
-  STORIES
+  STORIES,
+  CONTACT,
 } from './constants/pages';
 
 const { Content } = Layout;
@@ -80,9 +80,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path={HOME} component={Home} />
             <Route exact path={SHOP} component={Shop} />
-            <Route exact path={APPOINTMENT} component={Appointment} />
             <Route exact path={GALLERY} component={Gallery} />
             <Route exact path={STORIES} component={Stories} />
+            <Route exact path={CONTACT} component={Contact} />
           </Switch>
           </Content>
         </Layout>

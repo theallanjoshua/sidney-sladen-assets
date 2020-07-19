@@ -13,12 +13,12 @@ import {
   HomeFilled,
   ShoppingOutlined,
   ShoppingFilled,
-  PlusCircleOutlined,
-  PlusCircleFilled,
   PictureOutlined,
   PictureFilled,
   ReadOutlined,
   ReadFilled,
+  PhoneOutlined,
+  PhoneFilled,
   LogoutOutlined
 } from '@ant-design/icons';
 import { LOGO } from '../constants/app';
@@ -29,9 +29,9 @@ import {
   PAGE_URL_TITLE_MAP,
   HOME,
   SHOP,
-  APPOINTMENT,
   GALLERY,
   STORIES,
+  CONTACT,
 } from '../constants/pages';
 import { withRouter } from 'react-router';
 
@@ -48,11 +48,6 @@ const items = [
     activeIcon: <ShoppingFilled />
   },
   {
-    href: APPOINTMENT,
-    icon: <PlusCircleOutlined />,
-    activeIcon: <PlusCircleFilled />
-  },
-  {
     href: GALLERY,
     icon: <PictureOutlined />,
     activeIcon: <PictureFilled />
@@ -61,7 +56,12 @@ const items = [
     href: STORIES,
     icon: <ReadOutlined />,
     activeIcon: <ReadFilled />
-  }
+  },
+  {
+    href: CONTACT,
+    icon: <PhoneOutlined />,
+    activeIcon: <PhoneFilled />
+  },
 ];
 
 const NavItems = ({ isBottom }) => <Menu
@@ -74,7 +74,7 @@ const NavItems = ({ isBottom }) => <Menu
     <Link to={href}>
       <span className={isBottom ? 'flex-column' : ''}>
         {getPathFromLocation() === href ? activeIcon : icon}
-        {PAGE_URL_TITLE_MAP[href]}
+        <span>{PAGE_URL_TITLE_MAP[href]}</span>
       </span>
     </Link>
   </Item>)}
