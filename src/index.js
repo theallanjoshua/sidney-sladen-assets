@@ -2,7 +2,7 @@ import * as React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { Provider } from './context';
-import { Layout, Spin, Alert } from 'antd';
+import { Layout, Spin, Alert, BackTop } from 'antd';
 import { PAGE_ERROR } from './constants/app';
 // import Credentials from './utils/credentials';
 import { TopNavigation, BottomNavigation } from './components/navigation';
@@ -85,6 +85,7 @@ class App extends React.Component {
             <Route exact path={CONTACT} component={Contact} />
           </Switch>
           </Content>
+          <BackTop />
         </Layout>
         <BottomNavigation />
       </Router>
