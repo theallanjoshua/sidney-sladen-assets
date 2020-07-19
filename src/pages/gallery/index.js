@@ -7,50 +7,110 @@ const { Search } = Input;
 const { Text } = Typography;
 const photos = [
   {
-    src: "https://source.unsplash.com/2ShvY8Lf6l0/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/Dm-qxdynoEc/800x799",
-    width: 1,
-    height: 1
-  },
-  {
-    src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid1.jpg",
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid2.jpg",
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid3.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid4.jpg",
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
-    width: 4,
-    height: 3
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid5.jpg",
+    width: 3.5,
+    height: 4
   },
   {
-    src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid6.jpg",
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/PpOHJezOalU/800x599",
-    width: 4,
-    height: 3
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid7.jpg",
+    width: 2.5,
+    height: 4
   },
   {
-    src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
-    width: 4,
-    height: 3
-  }
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid8.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid9.jpg",
+    width: 3.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid10.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid11.jpg",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid12.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid13.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid14.jpg",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid15.jpg",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid16.jpg",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid17.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid18.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid19.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid20.jpg",
+    width: 2.5,
+    height: 4
+  },
+  {
+    src: "https://sidneysladen-media.s3.amazonaws.com/uuid21.jpg",
+    width: 2.5,
+    height: 4
+  },
 ];
 
 export class Gallery extends React.Component {
@@ -83,7 +143,7 @@ export class Gallery extends React.Component {
           <Modal onClose={() => this.setState({ showGallery: false, galleryStartIndex: 0 })}>
             <Carousel
               currentIndex={this.state.galleryStartIndex}
-              views={photos}
+              views={photos.map(({ src }) => ({ source: src }))}
             />
           </Modal>
         ) : null}
