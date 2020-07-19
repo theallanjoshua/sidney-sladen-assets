@@ -21,7 +21,12 @@ module.exports = {
           loader: 'less-loader',
           options: {
             modifyVars: {
-              'primary-color': '#eb008b'
+              'font-family': 'Avenir',
+              'primary-color': '#eb008b',
+              'text-color': '#fff',
+              'icon-color': '#eb008b',
+              'menu-icon-size': '20px',
+              'menu-icon-margin-right': '0px',
             },
             javascriptEnabled: true
           }

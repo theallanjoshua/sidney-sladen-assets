@@ -40,6 +40,7 @@ const { SubMenu, Item, Divider } = Menu;
 const items = [
   {
     href: HOME,
+    isVisible: isBottom => !!isBottom,
     icon: <HomeOutlined />,
     activeIcon: <HomeFilled />
   },
@@ -71,7 +72,9 @@ const NavItems = ({ isBottom }) => <Menu
   mode='horizontal'
   selectedKeys={[ getPathFromLocation() ]}
 >
-  {items.map(({ href, icon, activeIcon }) => <Item key={href}>
+  {items
+    .filter(({ isVisible = () => true }) => isVisible(isBottom))
+    .map(({ href, icon, activeIcon }) => <Item key={href}>
     <Link to={href}>
       <span>
         {getPathFromLocation() === href ? activeIcon : icon}
@@ -86,25 +89,29 @@ class TopNav extends React.Component {
     {({ email, avatar }) => <Affix>
       <Row
         className='center-align'
-        style={{ paddingLeft: '10px' }}
+        style={{
+          paddingLeft: '10px',
+          minHeight: '47px',
+          backgroundColor: '#000'
+        }}
       >
         <Col
           xs={12}
           sm={12}
-          md={2}
-          lg={3}
-          xl={3}
+          md={5}
+          lg={4}
+          xl={4}
           xxl={4}
         >
-          <Link to={HOME} style={{ marginTop: '3px' }}>
+          <Link to={HOME} style={{ marginTop: '3px' }} className='vertical-center-align'>
             {LOGO}
           </Link>
         </Col>
         <Col
           xs={0}
           sm={0}
-          md={18}
-          lg={18}
+          md={16}
+          lg={17}
           xl={18}
           xxl={18}
         >
@@ -113,18 +120,18 @@ class TopNav extends React.Component {
         <Col
           xs={12}
           sm={12}
-          md={4}
+          md={3}
           lg={3}
-          xl={3}
+          xl={2}
           xxl={2}
         >
-          <Menu
+          {email ? <Menu
             style={{ backgroundColor: '#000', borderBottom: 'none' }}
             className='right-align'
             mode='horizontal'
             selectedKeys={[]}
           >
-            {email ? <SubMenu
+            <SubMenu
               title={<Avatar
                 style={{ ...toMaterialStyle(email), marginBottom: '3px' }}
                 src={avatar}
@@ -140,10 +147,13 @@ class TopNav extends React.Component {
                   <span style={{ marginLeft: '10px' }}>Logout</span>
                 </span>
               </Item>
-            </SubMenu> : <Item>
-              <Button type='primary' children={'Login'} />
-            </Item>}
-          </Menu>
+            </SubMenu>
+          </Menu>  : <span className='right-align' style={{ paddingRight: '10px' }}>
+            <Button
+              type='primary'
+              children={'Login'}
+            />
+          </span>}
         </Col>
       </Row>
     </Affix>}
@@ -152,7 +162,10 @@ class TopNav extends React.Component {
 
 class BottomNav extends React.Component {
   render = () => <Affix offsetBottom={0}>
-    <Row className='center-align'>
+    <Row
+      className='center-align'
+      style={{ backgroundColor: '#000' }}
+    >
       <Col
         xs={24}
         sm={24}
