@@ -76,7 +76,6 @@ class App extends React.Component {
         <TopNavigation />
         <Layout style={{ minHeight: '100vh', padding: '10px' }}>
           <Content>
-          <br />
           <Switch>
             <Route exact path={HOME} component={Home} />
             <Route exact path={SHOP} component={Shop} />

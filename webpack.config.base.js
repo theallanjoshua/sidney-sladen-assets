@@ -27,6 +27,9 @@ module.exports = {
               'icon-color': '#eb008b',
               'menu-icon-size': '20px',
               'menu-icon-margin-right': '0px',
+              'body-background': '#363636',
+              'component-background': '#232323',
+              'input-bg': '#6d6d6d'
             },
             javascriptEnabled: true
           }

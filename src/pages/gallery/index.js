@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Typography, Input } from 'antd';
+import { Input } from 'antd';
 import PhotoGallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from "react-images";
 
 const { Search } = Input;
-const { Text } = Typography;
 const photos = [
   {
     src: "https://sidneysladen-media.s3.amazonaws.com/uuid1.jpg",
@@ -113,28 +112,69 @@ const photos = [
   },
 ];
 
+const options = [
+  { value: 'Burns Bay Road' },
+  { value: 'Downing Street' },
+  { value: 'Wall Street' },
+];
+
+const categories = [
+  'The classic pattu saree',
+  'Shimmering saree',
+  'Embroidery saree',
+  'The classic pattu saree',
+  'Shimmering saree',
+  'Embroidery saree',
+  'The classic pattu saree',
+  'Shimmering saree',
+  'Embroidery saree',
+  'The classic pattu saree',
+  'Shimmering saree',
+  'Embroidery saree',
+  'The classic pattu saree',
+  'Shimmering saree',
+  'Embroidery saree',
+  'The classic pattu saree',
+  'Shimmering saree',
+];
+
 export class Gallery extends React.Component {
   constructor() {
     super();
     this.state = {
+      keyword: '',
       showGallery: false,
       galleryStartIndex: 0
     }
   }
   render = () => {
     return <>
-      <div className='horizontal-center-align'>
         <div className='flex-column'>
-          <Text style={{ fontSize: '20px' }}>Explore our collection of exclusive dresses and sarees & find your style</Text>
           <Search
             placeholder="Ex. Red Lehenga"
             size='large'
+            style={{ maxWidth: '630px' }}
           />
+          <br />
+          <div className='flex-nowrap'>
+            {categories.map(category => <div style={{
+              minWidth: '120px',
+              minHeight: '160px',
+              background: 'black',
+              margin: '2px',
+              borderRadius: '10px',
+              display: 'flex',
+              alignItems: 'flex-end',
+              padding: '10px',
+            }}>
+              {category.toUpperCase()}
+            </div>)}
+          </div>
         </div>
-      </div>
       <br />
       <br />
       <PhotoGallery
+        margin={0.5}
         photos={photos}
         onClick={(e, {index }) => this.setState({ showGallery: true, galleryStartIndex: index })}
       />

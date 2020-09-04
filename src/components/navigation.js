@@ -18,8 +18,8 @@ import {
   PictureFilled,
   ReadOutlined,
   ReadFilled,
-  PhoneOutlined,
-  PhoneFilled,
+  CalendarOutlined,
+  CalendarFilled,
   LogoutOutlined
 } from '@ant-design/icons';
 import { LOGO } from '../constants/app';
@@ -61,13 +61,13 @@ const items = [
   },
   {
     href: CONTACT,
-    icon: <PhoneOutlined />,
-    activeIcon: <PhoneFilled />
+    icon: <CalendarOutlined />,
+    activeIcon: <CalendarFilled />
   },
 ];
 
 const NavItems = ({ isBottom }) => <Menu
-  style={{ backgroundColor: '#000', borderBottom: 'none' }}
+  style={{ borderBottom: 'none' }}
   className={isBottom ? 'space-between' : 'right-align'}
   mode='horizontal'
   selectedKeys={[ getPathFromLocation() ]}
@@ -92,7 +92,7 @@ class TopNav extends React.Component {
         style={{
           paddingLeft: '10px',
           minHeight: '47px',
-          backgroundColor: '#000'
+          background: '#232323'
         }}
       >
         <Col
@@ -103,7 +103,7 @@ class TopNav extends React.Component {
           xl={4}
           xxl={4}
         >
-          <Link to={HOME} style={{ marginTop: '3px' }} className='vertical-center-align'>
+          <Link to={HOME} className='vertical-center-align'>
             {LOGO}
           </Link>
         </Col>
@@ -126,7 +126,7 @@ class TopNav extends React.Component {
           xxl={2}
         >
           {email ? <Menu
-            style={{ backgroundColor: '#000', borderBottom: 'none' }}
+            style={{ borderBottom: 'none' }}
             className='right-align'
             mode='horizontal'
             selectedKeys={[]}
@@ -164,7 +164,6 @@ class BottomNav extends React.Component {
   render = () => <Affix offsetBottom={0}>
     <Row
       className='center-align'
-      style={{ backgroundColor: '#000' }}
     >
       <Col
         xs={24}
